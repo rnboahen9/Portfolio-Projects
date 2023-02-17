@@ -24,7 +24,7 @@ order by 1,2
 --Shows the likelihood of dying if you have covid in USA
 Select Location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 as Deathpercentage
 From ProjectOne..CovidDeaths
-where location like '%states%'
+where location like '%Ghana%'
 order by 1,2
 
 --Looking at Total cases vs population
@@ -32,7 +32,7 @@ order by 1,2
 
 Select Location, date, population, total_cases, (total_cases/population)*100 as DeathPercentage
 From ProjectOne..CovidDeaths
---where location like '%states%'
+--where location like '%Ghana%'
 order by 1,2
 
 
@@ -40,14 +40,14 @@ order by 1,2
 
 Select Location, Population, MAX(total_cases) as HighestInfectionCount, MAX((total_cases/population))*100 as PercentagePopulationInfected
 From ProjectOne..CovidDeaths
---where location like '%states%'
+--where location like '%Ghana%'
 Group by Location, Population
 order by PercentagePopulationInfected desc
 
 --Showing the countries with Highest Death Count per Population
 Select Location, MAX(cast(Total_deaths as int)) as TotalDeathCount
 From ProjectOne..CovidDeaths
---where location like '%states%'
+--where location like '%Ghana%'
 where continent is not null
 Group by Location
 order by TotalDeathCount desc
@@ -57,7 +57,7 @@ order by TotalDeathCount desc
 
 Select Continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
 From ProjectOne..CovidDeaths
---where location like '%states%'
+--where location like '%Ghana%'
 where continent is not null
 Group by continent
 order by TotalDeathCount desc
